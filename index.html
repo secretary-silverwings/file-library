@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+
+   <head>
+      <!--<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic' rel='stylesheet' type='text/css'>-->
+      <!--<link href='http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700' rel='stylesheet' type='text/css'>-->
+      <!--<link href='http://fonts.googleapis.com/css?family=Alegreya:400,700' rel='stylesheet' type='text/css'>-->
+      <title>SW File Library</title>
+
+      <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" rel="stylesheet" type="text/css">
+      <link href="css/main.css" rel="stylesheet" type="text.css">
+
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+      <script src="main.js" type="text/javascript"></script>
+   </head>
+
+   <body onLoad="fillYears(); populateTable(document.dateChooser)">
+
+      <div class="container"><!--contains and posistions all page content-->
+
+         <p class="pageTitle">Silver Wings File Library</p>
+
+         <p class="nav">
+            <a class="libNav libCal libNav_active" onclick="toggleDiv('libCal')">Calendar</a>
+            <a class="libNav libGeneral" onclick="toggleDiv('libGeneral')">General</a>
+            <!-- <a class="libNav libAwards" onclick="toggleDiv('libAwards')">Awards</a> -->
+            <!-- <a class="libNav libChapterForms" onclick="toggleDiv('libChapterForms')">Chapter</a> -->
+            <a class="libNav libReportingForms" onclick="toggleDiv('libReportingForms')">Reporting</a>
+            <a class="libNav libAppForms" onclick="toggleDiv('libAppForms')">Applications</a>
+            <a class="libNav libDevForms" onclick="toggleDiv('libDevForms')">Development</a>
+            <!-- <a class="libNav libMiscForms" onclick="toggleDiv('libMiscForms')">Misc</a> -->
+         </p>
+
+         <!--Calendar-->
+         <div id="libCal" class="libContent">
+            <h3>Calendar</h3>
+            <div id="calendar">
+               <header>
+                  <h2 ID="tableHeader"></h2>
+               </header>
+               <TABLE ID="calendarTable">
+                  <TR>
+                     <TH>S</TH>
+                     <TH>M</TH>
+                     <TH>T</TH>
+                     <TH>W</TH>
+                     <TH>T</TH>
+                     <TH>F</TH>
+                     <TH>S</TH>
+                  </TR>
+                  <TBODY ID="tableBody">
+                  </TBODY>
+               </TABLE>
+               <FORM NAME="dateChooser" id="calDateChooser">
+                  <SELECT NAME="chooseMonth" onChange="populateTable(this.form)">
+                     <OPTION SELECTED>January*</OPTION>
+                     <OPTION>February*</OPTION>
+                     <OPTION>March*</OPTION>
+                     <OPTION>April</OPTION>
+                     <OPTION>May</OPTION>
+                     <OPTION>June</OPTION>
+                     <OPTION>July</OPTION>
+                     <OPTION>August</OPTION>
+                     <OPTION>September</OPTION>
+                     <OPTION>October*</OPTION>
+                     <OPTION>November*</OPTION>
+                     <OPTION>December*</OPTION>
+                  </SELECT>
+                  <SELECT NAME="chooseYear" onChange="populateTable(this.form)">
+                  </SELECT>
+               </FORM>
+            </div>
+            <div id="forms" style="padding-top: 20px"></div>
+         </div>
+
+         <!--General-->
+         <div id="libGeneral" class="libContent" style="display: none;">
+            <h3>General</h3>
+            <p>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/SWM_2015.pdf" target="_blank">SWM - Silver Wings Manual (2015)
+                  <span>(PDF)</span>
+                  <span class="tooltip">The complete resource for everything Silver Wings</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/SWConst01Aug2009.pdf" target="_blank">Silver Wings Constitution (2009)
+                  <span>(PDF)</span>
+                  <span class="tooltip">The Silver Wings Constitution</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/JPM-1_Sept_2012.pdf" target="_blank">JPM - Joint Protocol Manual (2012)
+                  <span>(PDF)</span>
+                  <span class="tooltip">The complete resource for SW/AAS protocol concerning things like business events, social events, correspondence, flag protocol, etc</span>
+               </a>
+               <!-- <a href="https://www.aas-sw.org/ama/orig/swlibrary/Digital_Cheetah_and_You.pptx" target="_blank">Digital Cheetah and You
+                  <span>(PPTX)</span>
+                  <span class="tooltip">Powerpoint with tutorials to use the ass-sw.org website</span>
+               </a> -->
+            </p>
+            <h3>Reporting</h3>
+            <p>
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/2015_SPRING_TASK_LETTER.pdf" target="_blank">2015 Spring Tasking Letter
+                  <span>(PDF)</span>
+                  <span class="tooltip">Chapter President guidance for the Spring of 2015 from Silver Wings Co-Executive Directors</span>
+               </a>
+               <!-- <a href="https://www.aas-sw.org/ama/orig/jointlibrary/2014_FALL_TASK_LTR.pdf" target="_blank">2014 Fall Tasking Letter
+                  <span>(PDF)</span>
+                  <span class="tooltip">Chapter President guidance for the Fall of 2014 from Silver Wings Co-Executive Directors</span>
+               </a> -->
+            </p>
+         </div>
+
+         <!--Awards-->
+         <!-- <div id="libAwards" class="libContent" style="display: none;">
+            <h3>Awards</h3>
+            <p>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/awards/SWF18.docx" target="_blank">SWF18 - Chapter Award Nomination Cover Page
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Cover of application to nominate chapters for national awards</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/awards/SWF19.docx" target="_blank">SWF19 - National Individual Award Nomination
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Cover of application to nominate individuals for national awards</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/awards/SWF20.docx" target="_blank">SWF20 - Award Endorsement Page
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Inner pages of application to nominate individuals/chapters for national awards</span>
+               </a>
+            </p>
+         </div> -->
+
+         <!--Chapter-->
+         <!-- <div id="libChapterForms" class="libContent" style="display: none;">
+            <h3>Chapter</h3>
+            <p>
+               <a href="https://www.aas-sw.org/?nd=sw_cmr_form&options=&autofill=1&ipoff=0" target="_blank">SWF08 - Chapter Status Form
+                  <span>(online)</span>
+                  <span class="tooltip">Twice a year chapter status report</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/AASSWF01.docx" target="_blank">SWAASF01 - Report of Membership
+                  <span>(DOCX)</span>
+                  <span class="tooltip">List of all current members</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/AASSWF02.docx" target="_blank">SWAASF02 - Officer Roster
+                  <span>(DOCX)</span>
+                  <span class="tooltip">List of chapter officer members and positions</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/AASSWF03.docx" target="_blank">SWAASF03 - Proxy Vote Form
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Form to delegate Natcon business session votes for unrepresented chapters</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/AASSWF04.docx" target="_blank">SWAASF04 - Activation / Reactivation
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Form to activate or reactivate a chapter to be submitted with Form SWAASF01 (Report of Membership)</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/Chapter_Presidents_Guide_to_Silver_Wings_VER1.pdf" target="_blank">Chapter President's Guide (2013)
+                  <span>(PDF)</span>
+                  <span class="tooltip">A resource for new or old Chapter Presidents that covers everything you need to know</span>
+               </a>
+               <a href="?nd=m_store" target="_blank">Equipment and Manual Order Store
+                  <span>(online)</span>
+                  <span class="tooltip">Online store for Silver Wings equipment and award sponsorship</span>
+               </a>
+            </p>
+         </div> -->
+
+         <!--Reporting-->
+         <div id="libReportingForms" class="libContent" style="display: none;">
+            <h3>Reporting</h3>
+            <p>
+               <a href="https://docs.google.com/forms/d/1hdImSUA-_Jk6qPkL4q1AFdQ6MN1Qvz26876_TVtuSOc/viewform" target="_blank">Chapter Monthly Report
+                  <span>(online)</span>
+                  <span class="tooltip">Twice a year chapter status report</span>
+               </a>
+               <a href="https://www.aas-sw.org/?nd=sw_form_rmrform&amp;options=&amp;autofill=1&amp;ipoff=0" target="_blank">Region Monthly Report
+                  <span>(online)</span>
+                  <span class="tooltip">Region President's status form for their region</span>
+               </a>
+               <!-- <a href="https://www.aas-sw.org/?nd=sw_form7a&amp;options=&amp;autofill=1&amp;ipoff=0" target="_blank">Activity Report - Form A
+                  <span>(online)</span>
+                  <span class="tooltip">Resume of chapter activities carried on during the reporting period</span>
+               </a> -->
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/AASSWF01.docx" target="_blank">SWAASF01 - Report of Membership
+                  <span>(DOCX)</span>
+                  <span class="tooltip">List of all current members</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/AASSWF02.docx" target="_blank">SWAASF02 - Officer Roster
+                  <span>(DOCX)</span>
+                  <span class="tooltip">List of chapter officer members and positions</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/AASSWF03.docx" target="_blank">SWAASF03 - Proxy Vote Form
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Form to delegate Natcon business session votes for unrepresented chapters</span>
+               </a>
+            </p>
+         </div>
+
+         <!--Applications-->
+         <div id="libAppForms" class="libContent" style="display: none;">
+            <h3>Applications</h3>
+            <p>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/applications/SWF_05.docx" target="_blank">SWF05 - Region President Application
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Application to become a Region President</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/applications/SWF_06.docx" target="_blank">SWF06 - Region Public Affairs Officer Application
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Application to become a Region Public Affairs Officer</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/applications/SWF_11.docx" target="_blank">SWF11 - Workshop Application Form
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Application to present and run a workshop at an ARCON or NATCON</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/applications/SWF_12.docx" target="_blank">SWF12 - National Parliamentarian Application
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Application to become the National Parliamentarian</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/applications/SWF_13.docx" target="_blank">SWF13 - Region Parliamentarian Application
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Application to become a region Parliamentarian</span>
+               </a>
+            </p>
+            <h3>Awards</h3>
+            <p>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/awards/SWF18.docx" target="_blank">SWF18 - Chapter Award Nomination Cover Page
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Cover of application to nominate chapters for national awards</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/awards/SWF19.docx" target="_blank">SWF19 - National Individual Award Nomination
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Cover of application to nominate individuals for national awards</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/awards/SWF20.docx" target="_blank">SWF20 - Award Endorsement Page
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Inner pages of application to nominate individuals/chapters for national awards</span>
+               </a>
+            </p>
+         </div>
+
+         <!--Development-->
+         <div id="libDevForms" class="libContent" style="display: none;">
+            <h3>Development</h3>
+            <p>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/2014-2015-SW-National-Test1.docx" target="_blank">SW National Test (2014-2015)
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Meant to be used as a resource for studying for the current nation test</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/2014-2015-SW-National-Test-KEY.docx" target="_blank">SW National Test Answer Key (2014-2015)
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Meant to be used as a resource for studying for the current nation test</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/2014-2015-SW-Nat-Test-STUDY-GUIDE.pptx" target="_blank">SW National Test STUDY GUIDE (2014-2015)
+                  <span>(PPTX)</span>
+                  <span class="tooltip">Meant to be used as a resource for studying for the current nation test</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/RESOLUTIONJ4-MarkTheManatee.docx" target="_blank">RESOLUTION Example - Mark The Manatee
+                  <span>(DOCX)</span>
+                  <span class="tooltip">An example for how to properly format a Silver Wings Resolution</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/RESOLUTIONJ4-MarkTheManatee.pdf" target="_blank">RESOLUTION Example - Mark The Manatee
+                  <span>(PDF)</span>
+                  <span class="tooltip">An example for how to properly format a Silver Wings Resolution</span>
+               </a>
+               <a href="" target="_blank">Continuity (Coming soon)
+                  <span>(?)</span>
+                  <span class="tooltip">Continuity (Coming soon)</span>
+               </a>
+               <a href="" target="_blank">Activation/Reactivations (Coming soon)
+                  <span>(?)</span>
+                  <span class="tooltip">Activation/Reactivations (Coming soon)</span>
+               </a>
+               <a href="" target="_blank">Activation Guide (2015) (Coming soon)
+                  <span>(?)</span>
+                  <span class="tooltip">Activation Guide (2015) (Coming soon)</span>
+               </a>
+               <a href="" target="_blank">Associate Members Guide (2015) (Coming soon)
+                  <span>(?)</span>
+                  <span class="tooltip">Associate Members Guide (2015) (Coming soon)</span>
+               </a>
+               <a href="" target="_blank">Playbook (Coming soon)
+                  <span>(?)</span>
+                  <span class="tooltip">Playbook (Coming soon)</span>
+               </a>
+               <a href="" target="_blank">Chapter Continuity (Coming soon)
+                  <span>(?)</span>
+                  <span class="tooltip">Chapter Continuity (Coming soon)</span>
+               </a>
+               <a href="" target="_blank">Example By-Laws (Coming soon)
+                  <span>(?)</span>
+                  <span class="tooltip">Example By-Laws (Coming soon)</span>
+               </a>
+
+               <!-- <a href="https://www.aas-sw.org/ama/orig/swlibrary/SWActM_01_Sep_2005.pdf" target="_blank">SWActM - Silver Wings National Activation Manual (2005)
+                  <span>(PDF)</span>
+                  <span class="tooltip">A guide to starting a Silver Wings Chapter</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/SWAMG_01_Sep_2005.pdf" target="_blank">SWAMG - Associate Member's and Orientation Workshop Leader's Guide (2005)
+                  <span>(PDF)</span>
+                  <span class="tooltip">A guide to training and retaining a chapter's new members</span>
+               </a> -->
+            </p>
+         </div>
+
+         <!--Misc-->
+         <!-- <div id="libMiscForms" class="libContent" style="display: none;">
+            <h3>Miscellaneous</h3>
+            <p>
+               <a href="https://www.aas-sw.org/ama/orig/swlibrary/forms/misc/SWF_07B.docx" target="_blank"> SWF07B - Project Form B: Activity Continuity Worksheet
+                  <span>(DOCX)</span>
+                  <span class="tooltip">Resource to document past activities for future chapter members</span>
+               </a>
+               <a href="https://www.aas-sw.org/ama/orig/jointlibrary/AAS_SW_Advisor_Handbook_10Nov14.pdf" target="_blank">AAS &amp; SW Advisor Handbook
+                  <span>(PDF)</span>
+                  <span class="tooltip">Resource to familiarize SW chapter advisors with the policies and procedures of the organization</span>
+               </a>
+            </p>
+         </div> -->
+      </div><!--close of .container-->
+
+      <noscript><!--added to detect if user does not have javscript enabled. Took from stackoverflow-->
+         <style type="text/css">
+            .libContent,.nav{/*hides navigation menu and content*/
+               display:none;
+            }
+            body{/*centers title text and message*/
+               width:500px;
+               margin:0 auto;
+            }
+         </style>
+         <div><!--message to users with javascript disabled-->
+            You don't have javascript enabled.  Enable it to view this webpage.
+         </div>
+      </noscript>
+   </body>
+</html>
